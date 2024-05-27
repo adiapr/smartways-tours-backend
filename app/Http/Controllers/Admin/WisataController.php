@@ -12,7 +12,7 @@ class WisataController extends Controller
      */
     public function index()
     {
-        //
+        return view('admin.paket-wisata.index');
     }
 
     /**
@@ -20,7 +20,7 @@ class WisataController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.tours.create');
     }
 
     /**
