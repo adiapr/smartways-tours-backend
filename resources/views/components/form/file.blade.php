@@ -1,11 +1,10 @@
 @push('styles')
-    <link rel="stylesheet" href="{{ asset('assets/css/dropify.min.css') }}">
-    <link rel="stylesheet" href="{{ asset('admin/tom-select/dist/css/tom-select.bootstrap5.css') }}">
+    <link rel="stylesheet" href="{{ asset('plugins/dropify/css/dropify.min.css') }}">
 @endpush
 
 @push('scripts')
-    <script src="{{ asset('assets/js/dropify.min.js') }}"></script>
-    <script src="{{ asset('assets/js/upload-init.js') }}"></script>
+    <script src="{{ asset('plugins/dropify/js/dropify.min.js') }}"></script>
+    <script src="{{ asset('plugins/dropify/js/upload-init.js') }}"></script>
 @endpush
 
 <input type="file"

@@ -38,6 +38,6 @@
         </span>
     @enderror
 
-    @include('plugin.ckeditor5-classic')
+    {{-- @include('plugin.ckeditor5-classic') --}}
     {{-- @include('partials.ckeditor5') --}}
 </div>
