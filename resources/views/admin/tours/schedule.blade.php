@@ -36,6 +36,19 @@
                 height: 20px;
                 z-index: 400;
             }
+
+            .linimasa ul.timeline > li.null-time:before {
+                content: ' ';
+                background: #f50c1c;
+                display: inline-block;
+                position: absolute;
+                border-radius: 50%;
+                border: 3px solid #22c0e8;
+                left: 12px;
+                width: 35px;
+                height: 35px;
+                z-index: 400;
+            }
         </style>
     @endpush
 
@@ -54,7 +67,7 @@
                                 {{-- <h4>Latest News</h4> --}}
                                 <ul class="timeline">
                                     @forelse ($schedules as $item)
-                                        <li>
+                                        <li class="{{ $item->time === null ? 'null-time' : '' }}">
                                             <span class="text-primary fw-bold">{{ $item->time }}</span>
                                             <a href="{{ route('paket-wisata.schedule.edit', ['uuid' => $tour->uuid, 'id' => $item->id]) }}" class="btn btn-primary float-right btn-sm ml-1"><i class="fas fa-pencil-alt"></i></a> 
                                             <button class="btn btn-sm btn-danger delete-data float-right"
@@ -100,14 +113,14 @@
                             name="time"
                             label="Waktu"
                             :value="@$item_schedule->time"
-                            required
+                            {{-- required --}}
                             placeholder="Misal 10.00 - 12.00..."
                         />
                         <x-form.textarea 
                             name="description"
                             label="Deskripsi"
                             placeholder="Bisa diisi keterangan tempat..."
-                            required
+                            {{-- required --}}
                             editor="2"
                             :value="@$item_schedule->description"
                         />

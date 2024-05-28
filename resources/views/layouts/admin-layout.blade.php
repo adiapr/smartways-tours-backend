@@ -24,6 +24,7 @@
 	</div>
 	{{-- @notifyJs --}}
 	{{-- @include('notify::messages') --}}
+	@stack('modal')
 	@include('partials.script')
     @stack('scripts')
 </body>

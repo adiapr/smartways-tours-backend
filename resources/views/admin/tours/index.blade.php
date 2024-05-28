@@ -42,6 +42,7 @@
                         </button>
                         <a href="{{ route('paket-wisata.schedule', $item->uuid) }}" class="btn btn-outline-success btn-sm"><i class="far fa-clock"></i> Jadwal Tour</a>
                         <a href="" class="btn btn-outline-warning btn-sm"><i class="far fa-images"></i> Dokumentasi</a>
+                        <a href="{{ route('paket-wisata.price', $item->uuid) }}" class="btn btn-outline-danger btn-sm"><i class="fas fa-money-check-alt"></i> Data Harga</a>
                     </div>
                 </div>
             </div>
