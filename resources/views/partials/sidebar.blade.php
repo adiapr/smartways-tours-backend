@@ -26,8 +26,8 @@
                                 <span class="sub-item">Create Tours</span>
                             </a>
                         </li>
-                        <li>
-                            <a href="../components/buttons.html') }}">
+                        <li class="{{ request()->routeIs('paket-wisata.index') ? 'active' : '' }}">
+                            <a href="{{ route('paket-wisata.index') }}">
                                 <span class="sub-item">List Tours</span>
                             </a>
                         </li>

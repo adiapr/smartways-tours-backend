@@ -3,6 +3,7 @@
 <head>
 	@include('partials.style')
     @stack('styles')
+	{{-- @notifyCss --}}
 </head>
 <body>
 	<div class="wrapper">
@@ -21,6 +22,8 @@
 		{{-- @include('partials.custom') --}}
 		<!-- End Custom template -->
 	</div>
+	{{-- @notifyJs --}}
+	{{-- @include('notify::messages') --}}
 	@include('partials.script')
     @stack('scripts')
 </body>

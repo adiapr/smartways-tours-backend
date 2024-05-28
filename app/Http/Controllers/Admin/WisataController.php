@@ -3,7 +3,10 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\Location;
+use App\Models\Tour;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class WisataController extends Controller
 {
@@ -12,7 +15,11 @@ class WisataController extends Controller
      */
     public function index()
     {
-        return view('admin.paket-wisata.index');
+        $data = [
+            'tours' => Tour::with('location')->latest()->paginate(20),
+        ];
+        // return $data['tours'];
+        return view('admin.tours.index', $data);
     }
 
     /**
@@ -20,7 +27,12 @@ class WisataController extends Controller
      */
     public function create()
     {
-        return view('admin.tours.create');
+        $data = [
+            'method' => 'POST',
+            'url' => route('paket-wisata.store'),
+            'location' => Location::all(),
+        ];
+        return view('admin.tours._form', $data);
     }
 
     /**
@@ -28,7 +40,17 @@ class WisataController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $data = $request->except('_token');
+        $data['publishment'] = 'draft';
+        // return $data;
+
+        $tour = Tour::create($data);
+        if($request->hasFile('cover') && $request->file('cover')->isValid()){
+            $tour->addMediaFromRequest('cover')->toMediaCollection('cover');
+        }
+        // notify()->success('Operation successful', 'Success');
+        toastr()->success('Data berhasil ditambahkan');
+        return redirect()->route('paket-wisata.index');
     }
 
     /**
@@ -44,7 +66,13 @@ class WisataController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $data = [
+            'method' => 'put',
+            'url' => route('paket-wisata.update', $id),
+            'location' => Location::all(),
+            'item' => Tour::findOrFail($id),
+        ];
+        return view('admin.tours._form', $data);
     }
 
     /**
@@ -52,7 +80,13 @@ class WisataController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $tour = Tour::findOrFail($id);
+        $data = $request->except('_token');
+
+        $tour->update($data);
+        
+        toastr()->success('Data berhasil diperbarui');
+        return redirect()->route('paket-wisata.index');
     }
 
     /**
@@ -60,6 +94,20 @@ class WisataController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $data = Tour::findOrFail($id);
+        $data->delete();
+        $data->media()->delete();
+
+        if ($data) {
+            return response()->json([
+                "status" => "success",
+                "message" => "Data Berhasil Dihapus !"
+            ]);
+        } else {
+            return response()->json([
+                "status" => "error",
+                "message" => "Data Gagal Dihapus !"
+            ]);
+        }
     }
 }

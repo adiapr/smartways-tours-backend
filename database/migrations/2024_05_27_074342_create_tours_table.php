@@ -13,7 +13,10 @@ return new class extends Migration
     {
         Schema::create('tours', function (Blueprint $table) {
             $table->id();
+            $table->uuid('uuid');
             $table->string('name');
+            $table->string('slug');
+            $table->string('destination', 1000);
             $table->string('type');
             $table->unsignedBigInteger('location_id');
             $table->text('description');
