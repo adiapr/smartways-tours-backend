@@ -32,7 +32,7 @@
                             </a>
                         </li>
                         <li class="">
-                            <a href="../components/gridsystem.html') }}">
+                            <a href="/">
                                 <span class="sub-item">Grid System</span>
                             </a>
                         </li>

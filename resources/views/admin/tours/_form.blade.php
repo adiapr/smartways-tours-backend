@@ -26,7 +26,7 @@
                         <x-form.text 
                             name="name"
                             label="Nama Lokasi"
-                            :value="$item->name"
+                            :value="@$item->name"
                             required
                             placeholder="Input tour title..."
                         />

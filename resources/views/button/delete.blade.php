@@ -1,60 +1,67 @@
-<script>
-    $(".delete-data").click(function() {
-        var url = $(this).attr('data-url');
-        var journey = $(this).attr('data-journey');
-        var url_redirect = $(this).attr('data-url-redirect');
-        var id = $(this).attr('data-id');
-        var token = '{!! csrf_token() !!}';
-        Swal.fire({
-            title: 'Yakin ingin menghapus data?',
-            icon: 'question',
-            showCancelButton: true,
-            confirmButtonColor: '#3085d6',
-            cancelButtonColor: '#d33',
-            confirmButtonText: 'Ya, Hapus Saja'
-        }).then((result) => {
-            if (result.isConfirmed) {
-                //ajax delete
-                $.ajax({
-                    url: url,
-                    data: {
-                        "id": id,
-                        "journey_id": parseInt(journey),
-                        "_token": token
-                    },
-                    type: 'DELETE',
-                    success: function(response) {
-                        console.log(response);
-                        if (response.status == 'success') {
-                            Swal.fire(
-                                'Deleted!',
-                                response.message,
-                                'success'
-                            )
+@push('styles')
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css">
+@endpush
 
-                            if (url_redirect) {
-                                location.href = url_redirect;
+@push('scripts')
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script>
+        $(".delete-data").click(function() {
+            var url = $(this).attr('data-url');
+            var journey = $(this).attr('data-journey');
+            var url_redirect = $(this).attr('data-url-redirect');
+            var id = $(this).attr('data-id');
+            var token = '{!! csrf_token() !!}';
+            Swal.fire({
+                title: 'Yakin ingin menghapus data?',
+                icon: 'question',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Ya, Hapus Saja'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    //ajax delete
+                    $.ajax({
+                        url: url,
+                        data: {
+                            "id": id,
+                            "journey_id": parseInt(journey),
+                            "_token": token
+                        },
+                        type: 'DELETE',
+                        success: function(response) {
+                            console.log(response);
+                            if (response.status == 'success') {
+                                Swal.fire(
+                                    'Deleted!',
+                                    response.message,
+                                    'success'
+                                )
+    
+                                if (url_redirect) {
+                                    location.href = url_redirect;
+                                } else {
+                                    location.reload();
+                                }
                             } else {
-                                location.reload();
+                                Swal.fire(
+                                    'Failed!',
+                                    response.message,
+                                    'error'
+                                )
                             }
-                        } else {
+                        },
+                        error: function(err) {
                             Swal.fire(
                                 'Failed!',
-                                response.message,
+                                "Pastikan koneksi stabil",
                                 'error'
                             )
+                            console.log(err);
                         }
-                    },
-                    error: function(err) {
-                        Swal.fire(
-                            'Failed!',
-                            "Pastikan koneksi stabil",
-                            'error'
-                        )
-                        console.log(err);
-                    }
-                });
-            }
-        })
-    });
-</script>
+                    });
+                }
+            })
+        });
+    </script>
+@endpush

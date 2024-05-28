@@ -40,6 +40,8 @@
                             data-id="{{ $item->id }}">
                             <i class="fas fa-trash-alt"></i> Hapus
                         </button>
+                        <a href="{{ route('paket-wisata.schedule', $item->uuid) }}" class="btn btn-outline-success btn-sm"><i class="far fa-clock"></i> Jadwal Tour</a>
+                        <a href="" class="btn btn-outline-warning btn-sm"><i class="far fa-images"></i> Dokumentasi</a>
                     </div>
                 </div>
             </div>

@@ -66,4 +66,8 @@ class Tour extends Model implements HasMedia
     public function location(){
         return $this->belongsTo(Location::class,'location_id');
     }
+
+    public function schedules(){
+        return $this->hasMany(TourSchedule::class);
+    }
 }
