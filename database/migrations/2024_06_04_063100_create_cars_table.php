@@ -13,6 +13,19 @@ return new class extends Migration
     {
         Schema::create('cars', function (Blueprint $table) {
             $table->id();
+            $table->uuid('uuid');
+            $table->string('name');
+            $table->string('slug');
+            $table->unsignedBigInteger('location_id');
+            $table->string('category');
+            $table->string('transmission');
+            $table->integer('start_price');
+            $table->integer('price');
+            $table->string('ratings');
+            $table->integer('reviews_count');
+            $table->integer('passenger_count');
+            $table->integer('luggage_count');
+            $table->integer('mileage');
             $table->timestamps();
         });
     }
