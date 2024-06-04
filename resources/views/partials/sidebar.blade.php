@@ -1,8 +1,8 @@
 <div class="sidebar-wrapper scrollbar scrollbar-inner">
     <div class="sidebar-content">
         <ul class="nav nav-primary">
-            <li class="nav-item {{ request()->routeIs('dashboard.index') ? 'active' : '' }}">
-                <a href="{{ route('dashboard.index') }}">
+            <li class="nav-item {{ request()->routeIs('dashboard') ? 'active' : '' }}">
+                <a href="{{ route('dashboard') }}">
                     <i class="fas fa-home"></i>
                     <p>Dashboard</p>
                 </a>
