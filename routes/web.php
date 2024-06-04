@@ -42,7 +42,7 @@ Route::middleware('auth')->group(function () {
     // Tour price 
     Route::get('/paket-wisata-price/{uuid}', [WisataPriceController::class, 'index'])->name('paket-wisata.price');
     Route::post('/paket-wisata-price/{uuid}', [WisataPriceController::class, 'store'])->name('paket-wisata.price.store');
-    Route::delete('/paket-wisata-schedule/{id}', [WisataPriceController::class, 'destroy'])->name('paket-wisata.price.destroy');
+    Route::delete('/paket-wisata-price/{id}', [WisataPriceController::class, 'destroy'])->name('paket-wisata.price.destroy');
     Route::put('/paket-wisata-price/{id}/update', [WisataPriceController::class, 'update'])->name('paket-wisata.price.update');
 
     // Tour documentation 
