@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\MorphTo;
 use Spatie\Sluggable\SlugOptions;
 use Illuminate\Support\Str;
 use Spatie\MediaLibrary\HasMedia;
@@ -25,7 +26,12 @@ class Tour extends Model implements HasMedia
         'description',
         'packet',
         'no_packet',
-        'publishment'
+        'publishment',
+        'duration',
+        'group_size',
+        'transportation',
+        'free_cancel',
+        'map',
     ];
 
     protected static function boot()
@@ -47,8 +53,8 @@ class Tour extends Model implements HasMedia
     public function registerMediaConversions(Media $media = null): void
     {
         $this->addMediaConversion('thumb')
-            ->width(200)
-            ->height(200);
+            ->width(900)
+            ->height(700);
     }
 
     // get image
@@ -69,5 +75,17 @@ class Tour extends Model implements HasMedia
 
     public function schedules(){
         return $this->hasMany(TourSchedule::class);
+    }
+
+    public function documentations(){
+        return $this->morphMany(Documentation::class, 'documentations');
+    }
+
+    public function tour_schedules(){
+        return $this->hasMany(TourSchedule::class)->orderBy('order_by', 'asc');
+    }
+
+    public function prices(){
+        return $this->hasMany(TourPrice::class)->orderBy('name', 'asc');
     }
 }

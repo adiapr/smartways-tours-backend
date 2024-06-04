@@ -2,6 +2,8 @@
 
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\WisataController;
+use App\Http\Controllers\Admin\WisataDocumemnationController;
+use App\Http\Controllers\Admin\WisataDocumentationController;
 use App\Http\Controllers\Admin\WisataPriceController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\PubllishController;
@@ -42,6 +44,11 @@ Route::middleware('auth')->group(function () {
     Route::post('/paket-wisata-price/{uuid}', [WisataPriceController::class, 'store'])->name('paket-wisata.price.store');
     Route::delete('/paket-wisata-schedule/{id}', [WisataPriceController::class, 'destroy'])->name('paket-wisata.price.destroy');
     Route::put('/paket-wisata-price/{id}/update', [WisataPriceController::class, 'update'])->name('paket-wisata.price.update');
+
+    // Tour documentation 
+    Route::get('/paket-wisata-documentation/{uuid}', [WisataDocumentationController::class, 'index'])->name('paket-wisata.documentation');
+    Route::post('/paket-wisata-documentation/{id}', [WisataDocumentationController::class, 'store'])->name('paket-wisata.documentation.store');
+    Route::delete('/paket-wisata-documentation/{id}/delete', [WisataDocumentationController::class, 'destroy'])->name('paket-wisata.documentation.destroy');
 });
 
 require __DIR__.'/auth.php';

@@ -26,10 +26,10 @@ class LocationSeeder extends Seeder
                 "type" => "Domestik",
                 "location" => "Lombok"
             ],
-            [
-                "type" => "Domestik",
-                "location" => "Belitung"
-            ],
+            // [
+            //     "type" => "Domestik",
+            //     "location" => "Belitung"
+            // ],
             [
                 "type" => "Internasional",
                 "location" => "Jepang"

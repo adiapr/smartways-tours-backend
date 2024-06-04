@@ -18,4 +18,8 @@ class Location extends Model
             $model->uuid = (string) Str::uuid();
         });
     }
+
+    public function menuList(){
+        return $this->hasMany(Tour::class);
+    }
 }
