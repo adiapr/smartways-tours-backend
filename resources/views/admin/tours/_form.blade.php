@@ -147,9 +147,7 @@
                     </div>
                     <div class="col-md-6">
                         <label for="map" class="fw-bold mt-4">Embed Map</label>
-                        <textarea name="map" id="" cols="30" rows="10" required class="form-control mt-2" placeholder="Embed kode map bisa didapatkan dari google map">
-                            {{ @$item->map }}
-                        </textarea>
+                        <textarea name="map" id="" cols="30" rows="10" required class="form-control mt-2" placeholder="Embed kode map bisa didapatkan dari google map">{{ @$item->map }}</textarea>
                     </div>
                     <div class="col-md-6">
                         <x-form.textarea 

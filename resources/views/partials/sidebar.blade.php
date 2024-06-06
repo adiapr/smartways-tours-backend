@@ -31,9 +31,25 @@
                                 <span class="sub-item">List Tours</span>
                             </a>
                         </li>
-                        <li class="">
-                            <a href="/">
-                                <span class="sub-item">Grid System</span>
+                    </ul>
+                </div>
+            </li>
+            <li class="nav-item {{ request()->routeIs('rent-car.*') ? 'active' : '' }}">
+                <a data-toggle="collapse" href="#Rent">
+                    <i class="fas fa-car-side"></i>
+                    <p>Rent Car/Bus</p>
+                    <span class="caret"></span>
+                </a>
+                <div class="collapse {{ request()->routeIs('rent-car.*') ? 'show' : '' }}" id="Rent">
+                    <ul class="nav nav-collapse">
+                        <li class="{{ request()->routeIs('rent-car.create') ? 'active' : '' }}">
+                            <a href="{{ route('rent-car.create') }}">
+                                <span class="sub-item">Create Rent</span>
+                            </a>
+                        </li>
+                        <li class="{{ request()->routeIs('rent-car.index') ? 'active' : '' }}">
+                            <a href="{{ route('rent-car.index') }}">
+                                <span class="sub-item">List Tours</span>
                             </a>
                         </li>
                     </ul>

@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Admin\DashboardController;
+use App\Http\Controllers\Admin\RentController;
 use App\Http\Controllers\Admin\WisataController;
 use App\Http\Controllers\Admin\WisataDocumemnationController;
 use App\Http\Controllers\Admin\WisataDocumentationController;
@@ -49,6 +50,9 @@ Route::middleware('auth')->group(function () {
     Route::get('/paket-wisata-documentation/{uuid}', [WisataDocumentationController::class, 'index'])->name('paket-wisata.documentation');
     Route::post('/paket-wisata-documentation/{id}', [WisataDocumentationController::class, 'store'])->name('paket-wisata.documentation.store');
     Route::delete('/paket-wisata-documentation/{id}/delete', [WisataDocumentationController::class, 'destroy'])->name('paket-wisata.documentation.destroy');
+
+    // rent car 
+    Route::resource('/rent-car', RentController::class);
 });
 
 require __DIR__.'/auth.php';

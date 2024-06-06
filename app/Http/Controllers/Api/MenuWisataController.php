@@ -13,7 +13,7 @@ class MenuWisataController extends Controller
     {
         // $location = Location::with('menuList:name,slug as routePath,location_id')->select(['id', 'location as title'])->whereType('Domestik')->get();
         $location = Location::with(['menuList' => function($query) {
-            $query->select('id', 'name', 'slug as routePath', 'location_id')->with('media');
+            $query->select('id', 'name', 'slug as routePath', 'location_id')->with('media')->where('publishment', 'published');
         }])->select(['id', 'location as title'])
         ->whereType('Domestik')
         ->get();
