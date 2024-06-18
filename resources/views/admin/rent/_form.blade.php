@@ -60,8 +60,8 @@
                             <div class="col-md-3">
                                 <div class="form-group mt-3">
                                     <label for="" class="fw-bold">Termasuk Sopir?</label> <br>
-                                    <input type="radio" name="include_driver" {{ $item->include_driver == 'Iya' ? 'checked' : '' }} value="Iya" id="Ya" required> <label for="Ya">Iya</label> |
-                                    <input type="radio" name="include_driver" {{ $item->include_driver == 'Tidak' ? 'checked' : '' }} value="Tidak" id="Tidak" required> <label for="Tidak">Tidak</label>
+                                    <input type="radio" name="include_driver" {{ @$item->include_driver == 'Iya' ? 'checked' : '' }} value="Iya" id="Ya" required> <label for="Ya">Iya</label> |
+                                    <input type="radio" name="include_driver" {{ @$item->include_driver == 'Tidak' ? 'checked' : '' }} value="Tidak" id="Tidak" required> <label for="Tidak">Tidak</label>
 
                                     @error('include_driver')
                                         <p class="text-danger">{{ $message }}</p>
