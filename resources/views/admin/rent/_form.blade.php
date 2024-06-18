@@ -36,7 +36,7 @@
                                     <label for="" class="fw-bold">Lokasi</label>    
                                     <div class="row">
                                         @php
-                                           $locationIds = json_decode($item->location_id, true) ?? [];
+                                           $locationIds = json_decode(@$item->location_id, true) ?? [];
                                         @endphp
                                         @foreach ($location as $data)
                                             <div class="col-md-3">
