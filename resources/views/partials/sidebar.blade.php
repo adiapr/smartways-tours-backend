@@ -49,7 +49,7 @@
                         </li>
                         <li class="{{ request()->routeIs('rent-car.index') ? 'active' : '' }}">
                             <a href="{{ route('rent-car.index') }}">
-                                <span class="sub-item">List Tours</span>
+                                <span class="sub-item">List Rent</span>
                             </a>
                         </li>
                     </ul>

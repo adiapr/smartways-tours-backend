@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Api\CarController;
 use App\Http\Controllers\Api\MenuWisataController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -14,3 +15,7 @@ Route::get('/menu-wisata-internasional', [MenuWisataController::class, 'internas
 // tours 
 Route::get('/menu-wisata', [MenuWisataController::class, 'all']);
 Route::get('/menu-wisata/{slug}', [MenuWisataController::class, 'show']);
+
+// Car 
+Route::get('/rent-car', [CarController::class, 'index']);
+Route::get('/rent-car/{slug}', [CarController::class, 'show']);

@@ -10,7 +10,10 @@
             </h3>
         </div>
         <div class="card-body">
-            <form action="" method="post">
+            <form action="{{ $url }}" method="post" enctype="multipart/form-data">
+                @if (@$method == 'PUT')
+                    @method('PUT')
+                @endif
                 @csrf
                 <div class="row">
                     <div class="col-md-3">
@@ -25,21 +28,47 @@
                             label="Nama Transportasi"
                             :value="@$item->name"
                             required
-                            placeholder="Input tour title..."
+                            placeholder="Masukkan nama transportasi..."
                         />
-
-                        <div class="form-group mt-3">
-                            <label for="" class="fw-bold">Lokasi</label>
-                            <div class="row">
-                                @foreach ($location as $item)
-                                    
-                                    <div class="col-md-3">
-                                        <input type="checkbox" name="lokasi" value="{{ $item->id }}" id="{{ $item->id }}"> <label for="{{ $item->id }}"> {{ $item->location }}</label>
+                        <div class="row">
+                            <div class="col-md-9">
+                                <div class="form-group mt-3">
+                                    <label for="" class="fw-bold">Lokasi</label>    
+                                    <div class="row">
+                                        @php
+                                           $locationIds = json_decode($item->location_id, true) ?? [];
+                                        @endphp
+                                        @foreach ($location as $data)
+                                            <div class="col-md-3">
+                                                <input 
+                                                    type="checkbox" 
+                                                    name="location_id[]" 
+                                                    value="{{ $data->id }}" 
+                                                    id="{{ $data->id }}"
+                                                    @if (in_array($data->id, $locationIds))
+                                                        checked
+                                                    @endif
+                                                > 
+                                                <label for="{{ $data->id }}"> 
+                                                    {{ $data->location }}
+                                                </label>
+                                            </div>
+                                        @endforeach
                                     </div>
-                                @endforeach
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="form-group mt-3">
+                                    <label for="" class="fw-bold">Termasuk Sopir?</label> <br>
+                                    <input type="radio" name="include_driver" {{ $item->include_driver == 'Iya' ? 'checked' : '' }} value="Iya" id="Ya" required> <label for="Ya">Iya</label> |
+                                    <input type="radio" name="include_driver" {{ $item->include_driver == 'Tidak' ? 'checked' : '' }} value="Tidak" id="Tidak" required> <label for="Tidak">Tidak</label>
+
+                                    @error('include_driver')
+                                        <p class="text-danger">{{ $message }}</p>
+                                    @enderror
+                                </div>
                             </div>
                         </div>
-
                     </div>
                     <div class="col-md-3">
                         <div class="form-group mt-3">
@@ -76,6 +105,7 @@
                         </div>
                     </div>
                     <div class="col-md-3">
+                        
                         <x-form.text 
                             name="passenger_count"
                             label="Jumlah Kursi"
@@ -134,6 +164,9 @@
                             required
                             placeholder="Masukkan jumlah review..."
                         />
+                    </div>
+                    <div class="col-12">
+                        <button type="submit" class="btn btn-primary mt-3 w-100">Simpan Data</button>
                     </div>
                 </div>
             </form>

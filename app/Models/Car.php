@@ -29,6 +29,7 @@ class Car extends Model implements HasMedia
         'passenger_count',
         'luggage_count',
         'mileage',
+        'include_driver'
     ];
 
     protected static function boot()
