@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Api\AuthController;
 use App\Http\Controllers\Api\CarController;
 use App\Http\Controllers\Api\MenuWisataController;
 use Illuminate\Http\Request;
@@ -19,3 +20,10 @@ Route::get('/menu-wisata/{slug}', [MenuWisataController::class, 'show']);
 // Car 
 Route::get('/rent-car', [CarController::class, 'index']);
 Route::get('/rent-car/{slug}', [CarController::class, 'show']);
+
+// Login 
+Route::post('/register', [AuthController::class, 'register']);
+Route::post('/login', [AuthController::class, 'login']);
+Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
+    return $request->user();
+});
