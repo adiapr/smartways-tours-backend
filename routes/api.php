@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Api\AuthController;
 use App\Http\Controllers\Api\CarController;
+use App\Http\Controllers\Api\LocationController;
 use App\Http\Controllers\Api\MenuWisataController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -10,6 +11,7 @@ Route::get('/user', function (Request $request) {
     return $request->user();
 })->middleware('auth:sanctum');
 
+// paket wisata 
 Route::get('/menu-wisata-domestik', [MenuWisataController::class, 'domestik']);
 Route::get('/menu-wisata-internasional', [MenuWisataController::class, 'internasional']);
 
@@ -27,3 +29,6 @@ Route::post('/login', [AuthController::class, 'login']);
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
+
+// ambil data lokasi 
+Route::get('/location', [LocationController::class, 'index']);
