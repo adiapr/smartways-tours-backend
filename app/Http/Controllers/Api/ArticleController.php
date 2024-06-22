@@ -9,12 +9,12 @@ use Illuminate\Http\Request;
 class ArticleController extends Controller
 {
     public function index(){
-        $article = Article::wherePublishment('published')->latest()->paginate(20);
+        $article = Article::wherePublishment('published')->with('media')->latest()->paginate(20);
         return $article;
     }
 
     public function show($slug){
-        $article = Article::whereSlug($slug)->firstOrFail();
+        $article = Article::whereSlug($slug)->with('media')->firstOrFail();
 
         return $article;
     }
