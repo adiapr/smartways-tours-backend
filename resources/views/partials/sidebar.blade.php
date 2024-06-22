@@ -76,6 +76,27 @@
                     </ul>
                 </div>
             </li>
+            <li class="nav-item {{ request()->routeIs('content.*') ? 'active' : '' }}">
+                <a data-toggle="collapse" href="#Content">
+                    <i class="fas flaticon-imac"></i>
+                    <p>Content</p>
+                    <span class="caret"></span>
+                </a>
+                <div class="collapse {{ request()->routeIs('content.*') ? 'show' : '' }}" id="Content">
+                    <ul class="nav nav-collapse">
+                        <li class="{{ request()->routeIs('content.slider.*') ? 'active' : '' }}">
+                            <a href="{{ route('content.slider.index') }}">
+                                <span class="sub-item">Slider</span>
+                            </a>
+                        </li>
+                        <li class="{{ request()->routeIs('content.slider.index') ? '' : '' }}">
+                            <a href="#">
+                                <span class="sub-item">Testi Short</span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </li>
         </ul>
     </div>
 </div>

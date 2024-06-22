@@ -3,6 +3,7 @@
 use App\Http\Controllers\Admin\ArticleController;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\RentController;
+use App\Http\Controllers\Admin\SliderController;
 use App\Http\Controllers\Admin\WisataController;
 use App\Http\Controllers\Admin\WisataDocumemnationController;
 use App\Http\Controllers\Admin\WisataDocumentationController;
@@ -61,6 +62,11 @@ Route::middleware('auth')->group(function () {
     Route::post('upload',[CKEditorController::class, 'uploadFile'])->name('upload');
     Route::get('article-publish/{id}', [ArticleController::class, 'publish'])->name('admin.article.publish');
     Route::get('article-reject/{id}', [ArticleController::class, 'reject'])->name('admin.article.reject');
+
+    // content
+    Route::prefix('/content')->name('content.')->group( function () {
+        Route::resource('/slider', SliderController::class); 
+    });
 });
 
 require __DIR__.'/auth.php';

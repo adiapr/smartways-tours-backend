@@ -5,6 +5,7 @@ use App\Http\Controllers\Api\AuthController;
 use App\Http\Controllers\Api\CarController;
 use App\Http\Controllers\Api\LocationController;
 use App\Http\Controllers\Api\MenuWisataController;
+use App\Http\Controllers\Api\SliderController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -37,3 +38,6 @@ Route::get('/location', [LocationController::class, 'index']);
 // Article 
 Route::get('/article', [ArticleController::class, 'index']);
 Route::get('/article/{slug}', [ArticleController::class, 'show']);
+
+// Slider 
+Route::get('/slider', [SliderController::class, 'index']);
