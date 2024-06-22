@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Api\ArticleController;
 use App\Http\Controllers\Api\AuthController;
 use App\Http\Controllers\Api\CarController;
 use App\Http\Controllers\Api\LocationController;
@@ -32,3 +33,7 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 
 // ambil data lokasi 
 Route::get('/location', [LocationController::class, 'index']);
+
+// Article 
+Route::get('/article', [ArticleController::class, 'index']);
+Route::get('/article/{slug}', [ArticleController::class, 'show']);

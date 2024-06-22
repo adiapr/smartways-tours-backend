@@ -1,11 +1,13 @@
 <?php
 
+use App\Http\Controllers\Admin\ArticleController;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\RentController;
 use App\Http\Controllers\Admin\WisataController;
 use App\Http\Controllers\Admin\WisataDocumemnationController;
 use App\Http\Controllers\Admin\WisataDocumentationController;
 use App\Http\Controllers\Admin\WisataPriceController;
+use App\Http\Controllers\CKEditorController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\PubllishController;
 use App\Http\Controllers\UploadFileCkeditorController;
@@ -53,6 +55,12 @@ Route::middleware('auth')->group(function () {
 
     // rent car 
     Route::resource('/rent-car', RentController::class);
+
+    // article
+    Route::resource('/article', ArticleController::class);
+    Route::post('upload',[CKEditorController::class, 'uploadFile'])->name('upload');
+    Route::get('article-publish/{id}', [ArticleController::class, 'publish'])->name('admin.article.publish');
+    Route::get('article-reject/{id}', [ArticleController::class, 'reject'])->name('admin.article.reject');
 });
 
 require __DIR__.'/auth.php';

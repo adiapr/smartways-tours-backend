@@ -55,6 +55,27 @@
                     </ul>
                 </div>
             </li>
+            <li class="nav-item {{ request()->routeIs('article.*') ? 'active' : '' }}">
+                <a data-toggle="collapse" href="#Article">
+                    <i class="fas flaticon-file"></i>
+                    <p>Article</p>
+                    <span class="caret"></span>
+                </a>
+                <div class="collapse {{ request()->routeIs('article.*') ? 'show' : '' }}" id="Article">
+                    <ul class="nav nav-collapse">
+                        <li class="{{ request()->routeIs('article.create') ? 'active' : '' }}">
+                            <a href="{{ route('article.create') }}">
+                                <span class="sub-item">Create Article</span>
+                            </a>
+                        </li>
+                        <li class="{{ request()->routeIs('article.index') ? 'active' : '' }}">
+                            <a href="{{ route('article.index') }}">
+                                <span class="sub-item">List Article</span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </li>
         </ul>
     </div>
 </div>
