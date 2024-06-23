@@ -4,6 +4,7 @@ use App\Http\Controllers\Admin\ArticleController;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\RentController;
 use App\Http\Controllers\Admin\SliderController;
+use App\Http\Controllers\Admin\TestimonyVideoController;
 use App\Http\Controllers\Admin\WisataController;
 use App\Http\Controllers\Admin\WisataDocumemnationController;
 use App\Http\Controllers\Admin\WisataDocumentationController;
@@ -12,6 +13,7 @@ use App\Http\Controllers\CKEditorController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\PubllishController;
 use App\Http\Controllers\UploadFileCkeditorController;
+use App\Models\TestimonyVideo;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -66,6 +68,7 @@ Route::middleware('auth')->group(function () {
     // content
     Route::prefix('/content')->name('content.')->group( function () {
         Route::resource('/slider', SliderController::class); 
+        Route::resource('/testimony', TestimonyVideoController::class);
     });
 });
 

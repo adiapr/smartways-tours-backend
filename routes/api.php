@@ -39,5 +39,6 @@ Route::get('/location', [LocationController::class, 'index']);
 Route::get('/article', [ArticleController::class, 'index']);
 Route::get('/article/{slug}', [ArticleController::class, 'show']);
 
-// Slider 
+// Content
 Route::get('/slider', [SliderController::class, 'index']);
+Route::get('/testimony', [SliderController::class, 'testimony']);

@@ -89,8 +89,8 @@
                                 <span class="sub-item">Slider</span>
                             </a>
                         </li>
-                        <li class="{{ request()->routeIs('content.slider.index') ? '' : '' }}">
-                            <a href="#">
+                        <li class="{{ request()->routeIs('content.testimony.index') ? 'active' : '' }}">
+                            <a href="{{ route('content.testimony.index') }}">
                                 <span class="sub-item">Testi Short</span>
                             </a>
                         </li>
