@@ -25,4 +25,8 @@ class TourPrice extends Model
             $model->uuid = (string) Str::uuid();
         });
     }
+
+    public function tour(){
+        return $this->belongsTo(Tour::class);
+    }
 }

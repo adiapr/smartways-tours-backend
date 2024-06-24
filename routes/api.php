@@ -3,8 +3,10 @@
 use App\Http\Controllers\Api\ArticleController;
 use App\Http\Controllers\Api\AuthController;
 use App\Http\Controllers\Api\CarController;
+use App\Http\Controllers\Api\CheckoutController;
 use App\Http\Controllers\Api\LocationController;
 use App\Http\Controllers\Api\MenuWisataController;
+use App\Http\Controllers\Api\MidtransController;
 use App\Http\Controllers\Api\SliderController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -42,3 +44,9 @@ Route::get('/article/{slug}', [ArticleController::class, 'show']);
 // Content
 Route::get('/slider', [SliderController::class, 'index']);
 Route::get('/testimony', [SliderController::class, 'testimony']);
+
+// Cart 
+Route::get('/cart/{uuid}', [CheckoutController::class, 'cart']);
+
+// create order 
+Route::post('/create-transaction', [MidtransController::class, 'createOrder']);
