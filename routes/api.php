@@ -15,6 +15,10 @@ Route::get('/user', function (Request $request) {
     return $request->user();
 })->middleware('auth:sanctum');
 
+Route::options('/{any}', function() {
+    return response()->json([], 200);
+})->where('any', '.*');
+
 // paket wisata 
 Route::get('/menu-wisata-domestik', [MenuWisataController::class, 'domestik']);
 Route::get('/menu-wisata-internasional', [MenuWisataController::class, 'internasional']);
@@ -50,3 +54,7 @@ Route::get('/cart/{uuid}', [CheckoutController::class, 'cart']);
 
 // create order 
 Route::post('/create-transaction', [MidtransController::class, 'createOrder']);
+
+// Route::middleware(['cors'])->group(function () {
+//     Route::post('/create-transaction', [MidtransController::class, 'createOrder']);
+// });

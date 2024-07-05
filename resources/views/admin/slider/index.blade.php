@@ -1,7 +1,7 @@
 <x-admin-layout>
     <x-page-title 
         title="List Slider"
-        sub="Rent"
+        sub="Slider"
     />
 
     <div class="row">
