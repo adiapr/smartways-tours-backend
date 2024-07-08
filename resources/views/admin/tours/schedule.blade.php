@@ -105,7 +105,7 @@
                             name="order_by"
                             label="Nomor urut perjalanan"
                             type="number"
-                            :value="@$schedules_number->order_by ?? @$item_schedule->order_by"
+                            :value="@$schedules_number->order_by + 1 ?? @$item_schedule->order_by"
                             required
                             placeholder="Nomor urut perjalanan..."
                         />
